@@ -1,5 +1,4 @@
-```markdown
-# Video Timestamp Bookmarking Web Extension
+### Video Timestamp Bookmarking Web Extension
 
 ## Overview
 This project is a web extension designed to save bookmarks of video timestamps from videos playing in a web browser. It enhances the user experience by allowing them to easily save and revisit specific points in videos.
@@ -12,7 +11,7 @@ This project is a web extension designed to save bookmarks of video timestamps f
 ## Installation
 1. Clone the repository to your local machine.
     ```bash
-    git clone https://github.com/raman-at-pieces/youtube-bookmarker-finished-code.git
+    git clone https://github.com/godwinjs/videobookmarker.git
     ```
 2. Open your browser and navigate to the extensions settings.
 3. Enable developer mode.
@@ -34,11 +33,8 @@ This project is a web extension designed to save bookmarks of video timestamps f
 - **manifest.json:** Configuration file for the extension.
 
 ## Support
-For any issues or feedback, please contact [Your Name] at [Your Email].
+For any issues or feedback, please contact Godwin at godwinikechukwu.dev@gmail.com.
 
 ## Acknowledgements
 - This project was inspired by the need to enhance video watching experiences.
 - Special thanks to [Any contributors or resources used].
-```
-
-Feel free to customize the placeholders like `[Your Name]` and `[Your Email]` with your actual details. If you need any further modifications or additions, let me know!
