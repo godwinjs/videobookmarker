@@ -9,7 +9,7 @@ const addNewBookmark = (bookmarks, bookmark) => {
   newBookmarkElement.className = "bookmark";
   newBookmarkElement.setAttribute("data-id", bookmark.id);
   newBookmarkElement.setAttribute("timestamp", bookmark.time);
-
+ 
   bookmarkTitleElement.textContent = bookmark.desc;
   bookmarkTitleElement.className = "bookmark-title";
   controlsElement.className = "bookmark-controls";
