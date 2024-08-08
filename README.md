@@ -38,4 +38,3 @@ For any issues or feedback, please contact Godwin at godwinikechukwu.dev@gmail.c
 
 ## Acknowledgements
 - This project was inspired by the need to enhance video watching experiences.
-- Special thanks to [Any contributors or resources used].
