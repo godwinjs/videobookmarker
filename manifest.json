@@ -1,5 +1,5 @@
 {
-  "name": "Video Bookmarks",
+  "name": "Video Bookmarker",
   "version": "0.1.0",
   "description": "Saving timestamps on videos",
   "permissions": ["storage", "tabs"],
@@ -30,7 +30,7 @@
       "24": "assets/ext-icon.png",
       "32": "assets/ext-icon.png"
     },
-    "default_title": "My YT Bookmarks",
+    "default_title": "Video Bookmarker",
     "default_popup": "popup.html"
   },
   "manifest_version": 3
