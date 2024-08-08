@@ -5,6 +5,11 @@ const addNewBookmark = (bookmarks, bookmark) => {
   const controlsElement = document.createElement("div");
   const newBookmarkElement = document.createElement("div");
 
+  newBookmarkElement.id = "bookmark-" + bookmark.id;
+  newBookmarkElement.className = "bookmark";
+  newBookmarkElement.setAttribute("data-id", bookmark.id);
+  newBookmarkElement.setAttribute("timestamp", bookmark.time);
+
   bookmarkTitleElement.textContent = bookmark.desc;
   bookmarkTitleElement.className = "bookmark-title";
   controlsElement.className = "bookmark-controls";
@@ -12,14 +17,11 @@ const addNewBookmark = (bookmarks, bookmark) => {
   setBookmarkAttributes("play", onPlay, controlsElement);
   setBookmarkAttributes("delete", onDelete, controlsElement);
 
-  newBookmarkElement.id = "bookmark-" + bookmark.time;
-  newBookmarkElement.className = "bookmark";
-  newBookmarkElement.setAttribute("timestamp", bookmark.time);
-
   newBookmarkElement.appendChild(bookmarkTitleElement);
   newBookmarkElement.appendChild(controlsElement);
   bookmarks.appendChild(newBookmarkElement);
 };
+
 
 const viewBookmarks = (currentBookmarks=[]) => {
   const bookmarksElement = document.getElementById("bookmarks");
@@ -49,18 +51,17 @@ const onPlay = async e => {
 
 const onDelete = async e => {
   const activeTab = await getActiveTabURL();
-  const bookmarkTime = e.target.parentNode.parentNode.getAttribute("timestamp");
-  const bookmarkElementToDelete = document.getElementById(
-    "bookmark-" + bookmarkTime
-  );
+  const bookmarkId = e.target.parentNode.parentNode.getAttribute("data-id");
+  const bookmarkElementToDelete = document.getElementById("bookmark-" + bookmarkId);
 
   bookmarkElementToDelete.parentNode.removeChild(bookmarkElementToDelete);
 
   chrome.tabs.sendMessage(activeTab.id, {
     type: "DELETE",
-    value: bookmarkTime,
+    id: bookmarkId,
   }, viewBookmarks);
 };
+
 
 const setBookmarkAttributes =  (src, eventListener, controlParentElement) => {
   const controlElement = document.createElement("img");
