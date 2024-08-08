@@ -1,7 +1,8 @@
 ### Video Timestamp Bookmarking Web Extension
 
+
 ## Overview
-This project is a web extension designed to save bookmarks of video timestamps from videos playing in a web browser. It enhances the user experience by allowing them to easily save and revisit specific points in videos.
+This project is a simple web extension designed to save bookmarks of video timestamps from videos playing in a web browser. It enhances the user experience by allowing them to easily save and revisit specific points in videos.
 
 ## Features
 - **Bookmark Creation:** Users can create bookmarks for specific timestamps in videos.
