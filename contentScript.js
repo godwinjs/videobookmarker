@@ -8,11 +8,6 @@
    * Promise<Array> A promise that resolves with an array of bookmarks for the current video.
    */ 
 
-  // // To store data first before getting it
-  // chrome.storage.sync.set({key: 'value'}, function() {
-  //   console.log('Value is set to ' + 'value');
-  // });
-
   const fetchBookmarks = () => {
     return new Promise((resolve, reject) => {
       if (!chrome.storage || !chrome.storage.sync) {
@@ -32,6 +27,9 @@
 
 
   const addNewBookmarkEventHandler = async () => {
+      youtubePlayer = document.getElementsByClassName('video-stream')[0];
+      console.log(youtubePlayer.currentTime)
+
       const currentTime = youtubePlayer.currentTime;
       const newBookmark = {
         id: Date.now(), // Unique identifier
@@ -55,7 +53,6 @@
   };
 
   const newVideoLoaded = async () => {
-    
     const bookmarkBtnExists = document.getElementsByClassName("bookmark-btn")[0];
 
     if (!bookmarkBtnExists) {
@@ -94,18 +91,20 @@
   }
 
   chrome.runtime.onMessage.addListener((obj, sender, response) => {
-    console.log({"sender": sender})
+    console.log({"sender": sender}) //sender.origin: "chrome-extension://" + sender.id
     const { type, value, videoId, id } = obj;
+    console.log({value, currentVideoBookmarks, obj})
 
     if (type === "NEW") {
       currentVideo = videoId;
-      newVideoLoaded();
+      !bookmarkBtnExists && newVideoLoaded();
     } else if (type === "PLAY") {
       youtubePlayer.currentTime = value;
     } else if (type === "DELETE") {
-      currentVideoBookmarks = currentVideoBookmarks.filter((b) => b.id !== id);
+      console.log({value, currentVideoBookmarks, obj})
+      currentVideoBookmarks = currentVideoBookmarks.filter((b) => b.time != value);
       chrome.storage.sync.set({ [currentVideo]: JSON.stringify(currentVideoBookmarks) });
-      console.log({"delete currentVideoBookmarks": currentVideoBookmarks})
+      console.log({"delete currentVideoBookmarks": currentVideoBookmarks, currentVideo})
 
       response(currentVideoBookmarks);
     }
